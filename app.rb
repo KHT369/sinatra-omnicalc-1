@@ -42,9 +42,11 @@ get("/payment/results") do
   
   ptop = (@apr/ 100.0 / 12) * @pv
   pbottom = (1 - ((1 + @apr / 100.0 / 12) ** (-@years * 12)))
-  @aprp = "#{@apr / 100.0}%"
 
-  @payment = ptop / pbottom
+  @payment = ptop / pbottom 
+  @paymentr = @payment.round(4)
+  @paymentc = @paymentr.to_fs(:currency)
+  @aprp = "#{(@apr).round(4)}%"
 
   erb(:resultspay)
 end
