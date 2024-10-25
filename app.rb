@@ -41,7 +41,7 @@ get("/payment/results") do
   @years = params.fetch("user_years", 0).to_i
   
   ptop = (@apr/ 100.0 / 12) * @pv
-  pbottom = (1 - ((1 + @apr / 100.0 / 12) ** (-@years * 12))
+  pbottom = (1 - ((1 + @apr / 100.0 / 12) ** (-@years * 12)))
   @aprp = "#{@apr / 100.0}%"
 
   @payment = ptop / pbottom
